@@ -1,0 +1,25 @@
+{
+  "name": "tz-mongodb",
+  "version": "1.0.0",
+  "description": "Load OSM TZ data into a mongodb collection",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jskrzypek/tz-mongodb.git"
+  },
+  "keywords": [
+    "mongodb",
+    "tz",
+    "timezone",
+    "openstreetmap"
+  ],
+  "author": "Joshua Skrzypek <jskrzypek@gmail.com>",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/jskrzypek/tz-mongodb/issues"
+  },
+  "homepage": "https://github.com/jskrzypek/tz-mongodb#readme"
+}
