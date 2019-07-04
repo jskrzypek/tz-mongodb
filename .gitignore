@@ -1,0 +1,26 @@
+# Build
+build/
+dist/
+data/
+features/
+.tmp
+
+# Vendor files
+node_modules/
+
+# Temp directories
+temp/
+test/tmp
+test/temp
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Visual Studio Code
+.vscode/

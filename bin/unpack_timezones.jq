@@ -1,0 +1,1 @@
+.features | map( .properties.tzid + "%%%" + (. * { "properties": { "timezone": .properties.tzid } } | tostring) ) | .[]
