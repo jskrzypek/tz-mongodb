@@ -1,6 +1,6 @@
 {
   "name": "tz-mongodb",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Load OSM TZ data into a mongodb collection",
   "main": "index.js",
   "config": {
