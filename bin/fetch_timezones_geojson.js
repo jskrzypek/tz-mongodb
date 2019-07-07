@@ -3,6 +3,7 @@
 const path = require('path');
 const Octokit = require('@octokit/rest');
 const wget = require('wget-improved');
+const fs = require('fs-extra');
 const _ = require('lodash');
 const argv = require('yargs')
   .env('TZ_MONGODB')
@@ -79,6 +80,7 @@ async function download(source, dest, {
   onError = console.log.bind(console, 'onError'),
   ...options
 } = { gunzip: true }) {
+  await fs.ensureDir(ASSET_DEST_DIR);
   await new Promise((resolve, reject) => {
     console.log(source, '->', dest);
     wget.download(source, dest, options)
