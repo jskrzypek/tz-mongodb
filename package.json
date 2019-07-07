@@ -10,12 +10,13 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "fetch:timezones:geojson": "if [[ ! -f ${npm_package_config_timezones_combined_dest_path} ]] ; then ; node ./bin/fetch_timezones_geojson.js ; else ; echo \"Timezones geojson already downloaded\" ; fi",
+    "fetch:timezones:geojson": "if [[ ! -f ${npm_package_config_timezones_combined_dest_path} ]] ; then  node ./bin/fetch_timezones_geojson.js ; else  echo \"Timezones geojson already downloaded\" ; fi",
     "unpack:timezones:to:files": "npm run -s cat:timezones | node_modules/node-jq/bin/jq -r -f ./bin/unpack_timezones.jq | awk -f ./bin/write_to_features.awk",
-    "cat:timezones": "cat ${npm_package_config_timezones_combined_dest_path} | funzip ",
+    "cat:timezones": "cat ${TIMEZONES_GEOJSON-${npm_package_config_timezones_combined_dest_path}} | funzip ",
     "extract:features": "node_modules/node-jq/bin/jq '.features | .[] | . * { properties: { timezone: .properties.tzid } }'",
     "import:to:mongo": "mongoimport --uri ${MONGO_URL-${npm_package_config_mongo_url}} -c ${COLLECTION_NAME-${npm_package_config_collection_name}}",
-    "full:import": "npm run fetch:timezones:geojson && npm run -s cat:timezones | npm run -s extract:features | npm run -s import:to:mongo"
+    "import:from:file": "npm run -s cat:timezones | npm run -s extract:features | npm run -s import:to:mongo",
+    "full:import": "npm run fetch:timezones:geojson && npm run -s import:from:file"
   },
   "bin": "./bin/import-timezones.sh",
   "repository": {
